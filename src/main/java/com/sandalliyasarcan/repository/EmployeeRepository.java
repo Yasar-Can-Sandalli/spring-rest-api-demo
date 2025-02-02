@@ -18,7 +18,6 @@ public class EmployeeRepository {
     private List<Employee> employeeList;
 
     //Bean olarak AnnotationConfigApplicationContext class ı ile de çağırılabilir
-
     public  List<Employee> getEmployeeList2(){
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         this.employeeList = context.getBean(AppConfig.class).getEmployeeList();
@@ -31,4 +30,20 @@ public class EmployeeRepository {
         return employeeList;
 
     }
+
+    public Employee getEmployeeById(String id) {
+        Employee findEmployee = null;
+
+        for (Employee employee : employeeList) {
+            if (employee.getId().equals(id)){
+                findEmployee = employee;
+                break;
+            }
+        }
+
+        return findEmployee;
+    }
+
 }
+
+
