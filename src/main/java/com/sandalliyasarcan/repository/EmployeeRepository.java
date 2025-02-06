@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -35,13 +36,42 @@ public class EmployeeRepository {
         Employee findEmployee = null;
 
         for (Employee employee : employeeList) {
-            if (employee.getId().equals(id)){
+            if (employee.getId().equalsIgnoreCase(id)){
                 findEmployee = employee;
                 break;
             }
         }
 
         return findEmployee;
+    }
+
+
+    public List<Employee> getEmployeeWithParams(String firstName, String lastName) {
+        List<Employee> employeeListWithParams = new ArrayList<Employee>();
+        if (firstName == null && lastName == null) {
+            return employeeList;
+        } else if (firstName != null && lastName != null) {
+            for (Employee employee : employeeList) {
+                if (employee.getFirstName().equalsIgnoreCase(firstName) && employee.getLastName().equalsIgnoreCase(lastName)) {
+                    employeeListWithParams.add(employee);
+                }
+            }
+        } else if (firstName != null && lastName == null) {
+            for (Employee employee : employeeList) {
+                if (employee.getFirstName().equalsIgnoreCase(firstName)) {
+                    employeeListWithParams.add(employee);
+                }
+            }
+        }else if (firstName == null && lastName != null) {
+            for (Employee employee : employeeList) {
+                if (employee.getLastName().equalsIgnoreCase(lastName)) {
+                    employeeListWithParams.add(employee);
+                }
+            }
+        }
+
+
+        return employeeListWithParams;
     }
 
 }
