@@ -45,7 +45,6 @@ public class EmployeeRepository {
         return findEmployee;
     }
 
-
     public List<Employee> getEmployeeWithParams(String firstName, String lastName) {
         List<Employee> employeeListWithParams = new ArrayList<Employee>();
         if (firstName == null && lastName == null) {
@@ -72,6 +71,12 @@ public class EmployeeRepository {
 
 
         return employeeListWithParams;
+    }
+
+    public Employee saveEmployee(Employee employee) {
+        this.employeeList.add(employee);
+        System.out.println("Employee saved");
+        return employee;
     }
 
 }
