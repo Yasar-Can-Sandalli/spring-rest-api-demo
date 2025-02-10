@@ -79,6 +79,18 @@ public class EmployeeRepository {
         return employee;
     }
 
+    public boolean deleteEmployee(String id) {
+        for (Employee employee : employeeList) {
+            if (employee.getId().equals(id)) {
+                this.employeeList.remove(employee);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 }
 
 
