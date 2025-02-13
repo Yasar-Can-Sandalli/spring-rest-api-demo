@@ -89,6 +89,16 @@ public class EmployeeRepository {
         return false;
     }
 
+    public boolean deleteEmployeeWithJson(Employee employee) {
+        for (Employee deleteEmployee : employeeList) {
+            if (deleteEmployee.getId().equals(employee.getId()) && deleteEmployee.getFirstName().equalsIgnoreCase(employee.getFirstName()) && deleteEmployee.getLastName().equalsIgnoreCase(employee.getLastName())) {
+                this.employeeList.remove(deleteEmployee);
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 }

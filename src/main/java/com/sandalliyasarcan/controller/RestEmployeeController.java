@@ -45,6 +45,11 @@ public class RestEmployeeController {
         return employeeService.deleteEmployee(id);
     }
 
+    @DeleteMapping(path = "/delete-employee/json")
+    public boolean deleteEmployeeWithJson(@RequestBody Employee employee) {
+        return employeeService.deleteEmployeeWithJson(employee);
+    }
+
 
 
 }

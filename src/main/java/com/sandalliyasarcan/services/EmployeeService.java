@@ -35,4 +35,8 @@ public class EmployeeService {
         return employeeRepository.deleteEmployee(id);
     }
 
+    public boolean deleteEmployeeWithJson(Employee employee) {
+        return  employeeRepository.deleteEmployeeWithJson(employee);
+    }
+
 }
