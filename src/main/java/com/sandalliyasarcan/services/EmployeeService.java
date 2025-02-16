@@ -39,4 +39,8 @@ public class EmployeeService {
         return  employeeRepository.deleteEmployeeWithJson(employee);
     }
 
+    public Employee updateEmployee(String id, Employee employee) {
+        return this.employeeRepository.updateEmployee(id, employee);
+    }
+
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +101,18 @@ public class EmployeeRepository {
         return false;
     }
 
-
+    public Employee updateEmployee(String id, Employee employee) {
+        for (Employee updateEmployee : employeeList) {
+            if (updateEmployee.getId().equals(id)) {
+                updateEmployee.setFirstName(employee.getFirstName());
+                updateEmployee.setLastName(employee.getLastName());
+                System.out.println("Employee updated");
+                return updateEmployee;
+            }
+        }
+        System.out.println("Employee not updated");
+        return null;
+    }
 
 }
 
